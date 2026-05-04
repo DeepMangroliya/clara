@@ -158,7 +158,7 @@ The source only labels sections explicitly two ways:
 I deliberately do **not** invent section names from "first word of the
 first metric" — that produces noise like `FB` or `Cancelled` for groups
 that aren't really their own thing. Everything that doesn't match a
-hard rule collapses into `Clinic Wide`. **Honest beats clever.**
+hard rule collapses into `Clinic Wide`.
 
 Result: 6 sections rather than ~16 spurious ones.
 
