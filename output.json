@@ -2,7 +2,7 @@
   "source_file": "Scoreboard Test.xlsx",
   "sheet": "SCOREBOARD",
   "schema_version": "1.0.0",
-  "generated_at": "2026-05-04T20:26:05Z",
+  "generated_at": "2026-05-04T21:12:05Z",
   "sections": [
     {
       "name": "Clinic Wide",
@@ -169,7 +169,10 @@
       "source": "EMR",
       "role": "J",
       "target": "`",
-      "column": "B"
+      "column": "B",
+      "description": "Enter the total revenue billed across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_product_revenue_all_services",
@@ -179,7 +182,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "C"
+      "column": "C",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "theraguns_sold_num",
@@ -189,7 +195,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "D"
+      "column": "D",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pillows",
@@ -199,7 +208,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "E"
+      "column": "E",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "custom_knee_brace",
@@ -209,7 +221,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "F"
+      "column": "F",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "orthotics",
@@ -219,7 +234,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "G"
+      "column": "G",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_payments_all_services",
@@ -229,7 +247,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "H"
+      "column": "H",
+      "description": "Enter the total payments collected across all services for a given week \"APPLIED PAYMENTS\"",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "revenue_collected_4_wk_avg",
@@ -239,7 +260,10 @@
       "source": "Ratio",
       "role": "J",
       "target": null,
-      "column": "I"
+      "column": "I",
+      "description": "Shows the % of total revenue collected across all services for a running 4 week average",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "ar_90_days",
@@ -249,7 +273,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "J"
+      "column": "J",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_ar",
@@ -259,7 +286,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "K"
+      "column": "K",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "online_bookings_via_jane",
@@ -269,7 +299,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "L"
+      "column": "L",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "consult_requests",
@@ -279,7 +312,10 @@
       "source": "Form",
       "role": null,
       "target": null,
-      "column": "M"
+      "column": "M",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "consults_turned_ax",
@@ -289,7 +325,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "N"
+      "column": "N",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_ax_all_services",
@@ -299,7 +338,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "O"
+      "column": "O",
+      "description": "Enter the total Assessments completed across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "ax_4_week_avg",
@@ -309,7 +351,10 @@
       "source": "GS",
       "role": "J",
       "target": null,
-      "column": "P"
+      "column": "P",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "num_of_rx_clinic_wide",
@@ -319,7 +364,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "Q"
+      "column": "Q",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "clinic_pva",
@@ -329,7 +377,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "R"
+      "column": "R",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cross_referral_ax_total",
@@ -339,7 +390,10 @@
       "source": "NAR",
       "role": "Nicole",
       "target": null,
-      "column": "T"
+      "column": "T",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "col_u",
@@ -349,7 +403,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "U"
+      "column": "U",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "submitted",
@@ -359,7 +416,10 @@
       "source": "Jane",
       "role": "J",
       "target": null,
-      "column": "V"
+      "column": "V",
+      "description": "1 Call right away process - What is the way to get notified on a cancellation ASAP? (Look into Jane) - CURRENTLY ON THIS (Jul 12,2022) Look at cancelled calls, what is happening on the call, reason for cancel etc - how do we adapt as we go forward? 2 Increase hours required for an online cancel to 48/72 hours 3 Take away ability to cancel online",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "unsubmitted",
@@ -369,7 +429,10 @@
       "source": "Jane",
       "role": "J",
       "target": null,
-      "column": "W"
+      "column": "W",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cancelled_total_ax",
@@ -379,7 +442,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "Y"
+      "column": "Y",
+      "description": "1 Call right away process - What is the way to get notified on a cancellation ASAP? (Look into Jane) - CURRENTLY ON THIS (Jul 12,2022) Look at cancelled calls, what is happening on the call, reason for cancel etc - how do we adapt as we go forward? 2 Increase hours required for an online cancel to 48/72 hours 3 Take away ability to cancel online",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cancelled_ax_online",
@@ -389,7 +455,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "Z"
+      "column": "Z",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cancelled_ax_online_pct",
@@ -399,7 +468,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "AA"
+      "column": "AA",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cancelled_online_ax_winback",
@@ -409,7 +481,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "AB"
+      "column": "AB",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "cancellation_pct",
@@ -419,7 +494,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "AC"
+      "column": "AC",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "num_of_fall_offs_total",
@@ -429,7 +507,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "AD"
+      "column": "AD",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "fall_off_pct_called",
@@ -439,7 +520,10 @@
       "source": "Tracker",
       "role": "Nicole",
       "target": null,
-      "column": "AE"
+      "column": "AE",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "fb_reviews",
@@ -449,7 +533,10 @@
       "source": "Facebook",
       "role": "J",
       "target": null,
-      "column": "AG"
+      "column": "AG",
+      "description": "Enter the total number of Facebook reviews to date for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "google_reviews",
@@ -459,7 +546,10 @@
       "source": "Google",
       "role": "J",
       "target": null,
-      "column": "AH"
+      "column": "AH",
+      "description": "Enter the total number of Google Reviews to date for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_calls_5530",
@@ -469,7 +559,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AJ"
+      "column": "AJ",
+      "description": "Enter the total number of incoming phone calls for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "missed_calls",
@@ -479,7 +572,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AK"
+      "column": "AK",
+      "description": "Enter the total number of missed phone calls for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "answer_rate",
@@ -489,7 +585,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AL"
+      "column": "AL",
+      "description": "Enter the phone answer rate for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "booking_rate",
@@ -499,7 +598,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AM"
+      "column": "AM",
+      "description": "Enter the new patient booking rate over the phone for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "nbo",
@@ -509,7 +611,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AN"
+      "column": "AN",
+      "description": "NBO (New Business Opportunities) Enter the total number of new patients that called for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "dnb",
@@ -519,7 +624,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AO"
+      "column": "AO",
+      "description": "DND (Did Not Book) Enter the total number of new patients that called but did not book an appointment for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "winback_ax_only",
@@ -529,7 +637,10 @@
       "source": "CallHero",
       "role": "J",
       "target": null,
-      "column": "AP"
+      "column": "AP",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "nar_collected_at_ax",
@@ -539,7 +650,10 @@
       "source": "NAR",
       "role": "J",
       "target": null,
-      "column": "AR"
+      "column": "AR",
+      "description": "NPR (New Assessment Registry) Enter the total number of new patients registered at Assessment across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "nar_pct_collected_at_ax",
@@ -549,7 +663,10 @@
       "source": "Formula",
       "role": "J",
       "target": "100% Target",
-      "column": "AS"
+      "column": "AS",
+      "description": "Shows the % of new patients (Assessments) that were registered across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "average_prescribed",
@@ -559,7 +676,10 @@
       "source": "NAR",
       "role": "J",
       "target": null,
-      "column": "AT"
+      "column": "AT",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "bookedprescribed_pct_total",
@@ -569,7 +689,10 @@
       "source": "Formula",
       "role": "J",
       "target": "Target = 75%",
-      "column": "AU"
+      "column": "AU",
+      "description": "Shows the % of new patients (Assessments) that were registered across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "num_of_tx_plan_given",
@@ -579,7 +702,10 @@
       "source": "NAR",
       "role": "J",
       "target": null,
-      "column": "AV"
+      "column": "AV",
+      "description": "NPR (New Assessment Registry) Enter the total number of new patients registered at Assessment across all services for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pct_tx_plan_used",
@@ -589,7 +715,10 @@
       "source": "NAR",
       "role": "J",
       "target": "Target = 80%",
-      "column": "AW"
+      "column": "AW",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "nps_collected_at_ax",
@@ -599,7 +728,10 @@
       "source": "NPS",
       "role": "BETH",
       "target": null,
-      "column": "AX"
+      "column": "AX",
+      "description": "NPS (Net Promoter Score) Enter the number of patient satisfaction cards completed at Assessment across all services for a given week",
+      "url": null,
+      "hidden": true
     },
     {
       "key": "nps_pct_collected_at_ax",
@@ -609,7 +741,10 @@
       "source": "Formula",
       "role": "BETH",
       "target": null,
-      "column": "AY"
+      "column": "AY",
+      "description": "Shows the % of NPS completed at Assessment across all services for a given week",
+      "url": null,
+      "hidden": true
     },
     {
       "key": "followup_won",
@@ -619,7 +754,10 @@
       "source": "Tracker",
       "role": "BETH",
       "target": null,
-      "column": "AZ"
+      "column": "AZ",
+      "description": "Enter the total number of patients that booked an appointment during a patient follow-up call for a given week Follow-up - patients that have been discharged and we called to see how they are doing",
+      "url": "https://docs.google.com/spreadsheets/d/1s496B9UDR0V6aowT5LYZIpAazEDG9mXXPINFQ_cf1ls/edit?usp=sharing",
+      "hidden": true
     },
     {
       "key": "dropped_clients_won",
@@ -629,7 +767,10 @@
       "source": "Tracker",
       "role": "BETH",
       "target": null,
-      "column": "BA"
+      "column": "BA",
+      "description": "Enter the total number of patients that booked an appointment during a patient fall-off call for a given week Fall-off - patients that have not been discharged, have not had an appointment in at least 1 week, and do not have a future appointment booked",
+      "url": "https://docs.google.com/spreadsheets/d/1rvlKu2jEbKbuiyAycq48R43M4TBOrds5lktcHJHBvik/edit?usp=sharing",
+      "hidden": true
     },
     {
       "key": "nar_submission",
@@ -639,7 +780,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BC"
+      "column": "BC",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "nar_percentage",
@@ -649,7 +793,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BD"
+      "column": "BD",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "shockwave_alone",
@@ -659,7 +806,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "BF"
+      "column": "BF",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "shockwave_plus_pt",
@@ -669,7 +819,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "BG"
+      "column": "BG",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "total_shockwave_revenue",
@@ -679,7 +832,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "BH"
+      "column": "BH",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_patient_database",
@@ -689,7 +845,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BJ"
+      "column": "BJ",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "total_active_patients",
@@ -699,7 +858,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BK"
+      "column": "BK",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "calls_made_by_other_clinicians",
@@ -709,7 +871,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BL"
+      "column": "BL",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "ahs_active_clients",
@@ -719,7 +884,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BM"
+      "column": "BM",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_active_called",
@@ -729,7 +897,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BN"
+      "column": "BN",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "discovery_booked",
@@ -739,7 +910,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BO"
+      "column": "BO",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "md_faxees_sent",
@@ -749,7 +923,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BP"
+      "column": "BP",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "mds_called",
@@ -759,7 +936,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BQ"
+      "column": "BQ",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "emails_sent",
@@ -769,7 +949,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BR"
+      "column": "BR",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "open_rate",
@@ -779,7 +962,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BS"
+      "column": "BS",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "email_responses",
@@ -789,7 +975,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BT"
+      "column": "BT",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "beth_outgoing_calls",
@@ -799,7 +988,10 @@
       "source": "OBJECTIONS",
       "role": null,
       "target": null,
-      "column": "BU"
+      "column": "BU",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "beth_incoming_calls",
@@ -809,7 +1001,10 @@
       "source": "HOOKS",
       "role": "DISOVERY calls",
       "target": null,
-      "column": "BV"
+      "column": "BV",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "total_calls",
@@ -819,7 +1014,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BW"
+      "column": "BW",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "discovery_call_booked",
@@ -829,7 +1027,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BX"
+      "column": "BX",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "clinic_wide__conversion_by",
@@ -839,7 +1040,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BY"
+      "column": "BY",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "discovery_call_delivered",
@@ -849,7 +1053,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "BZ"
+      "column": "BZ",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "paid_virtual_delivered",
@@ -859,7 +1066,10 @@
       "source": null,
       "role": "innocare",
       "target": null,
-      "column": "CA"
+      "column": "CA",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "virtual_revenue",
@@ -869,7 +1079,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CB"
+      "column": "CB",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "per_visit",
@@ -879,7 +1092,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CC"
+      "column": "CC",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "clinic_wide__conversion_cd",
@@ -889,7 +1105,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CD"
+      "column": "CD",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "inperson_visit",
@@ -899,7 +1118,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CE"
+      "column": "CE",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "md_f_per_u_post_vv_tx_calls",
@@ -909,7 +1131,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CG"
+      "column": "CG",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "pt_total_revenue",
@@ -919,7 +1144,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CJ"
+      "column": "CJ",
+      "description": "Enter the total amount of revenue billed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_ax",
@@ -929,7 +1157,10 @@
       "source": "EMR",
       "role": "J",
       "target": "Formula",
-      "column": "CK"
+      "column": "CK",
+      "description": "Enter the total number of Assessments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_tx",
@@ -939,7 +1170,10 @@
       "source": "EMR",
       "role": "J",
       "target": 426,
-      "column": "CL"
+      "column": "CL",
+      "description": "Enter the total number of treatments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_ahs_ax",
@@ -949,7 +1183,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CM"
+      "column": "CM",
+      "description": "In product report, please count the number of AHS Assessments (Ax)",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pct_of_total_ax_ahs",
@@ -959,7 +1196,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CN"
+      "column": "CN",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_ahs_tx_total",
@@ -969,7 +1209,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CO"
+      "column": "CO",
+      "description": "In product report, please count the number of AHS Treatment (Tx)",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_ahs_ax_hip_and_knee_class",
@@ -979,7 +1222,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CP"
+      "column": "CP",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_ahs_tx_hip_and_knee_class",
@@ -989,7 +1235,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CQ"
+      "column": "CQ",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt__pva_4_wk_avg",
@@ -999,7 +1248,10 @@
       "source": "Formula",
       "role": "J",
       "target": 213,
-      "column": "CR"
+      "column": "CR",
+      "description": "PVA (Patient Visit Average) Shows the average number of treatments sessions per Assessment completed for the service for a running 4 week average",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_available_appts",
@@ -1009,7 +1261,10 @@
       "source": "Estimate",
       "role": "J",
       "target": "Single (2/hr) Team (4/hr )",
-      "column": "CS"
+      "column": "CS",
+      "description": "Enter the total number of available appointments for the service for a given week. Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": true
     },
     {
       "key": "pt_total_available_hours_total",
@@ -1019,7 +1274,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CT"
+      "column": "CT",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_total_available_hours_pt_only",
@@ -1029,7 +1287,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CU"
+      "column": "CU",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_total_booked_hours",
@@ -1039,7 +1300,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CV"
+      "column": "CV",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_arrived_appts",
@@ -1049,7 +1313,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "CW"
+      "column": "CW",
+      "description": "Enter the total number of booked appointments (Ax + Tx) for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "utilization_with_kines",
@@ -1059,7 +1326,10 @@
       "source": "Formula",
       "role": "J",
       "target": "Target = 60%",
-      "column": "CX"
+      "column": "CX",
+      "description": "Shows the percent of available appointments that were booked for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "utilization_without_kines",
@@ -1069,7 +1339,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "CY"
+      "column": "CY",
+      "description": "Shows the percent of available appointments that were booked for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt_tp_given",
@@ -1079,7 +1352,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "CZ"
+      "column": "CZ",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pt__tp_utilization",
@@ -1089,7 +1365,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "DA"
+      "column": "DA",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_total_revenue",
@@ -1099,7 +1378,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DC"
+      "column": "DC",
+      "description": "Enter the total amount of revenue billed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_ax",
@@ -1109,7 +1391,10 @@
       "source": "EMR",
       "role": "J",
       "target": 3062.5,
-      "column": "DD"
+      "column": "DD",
+      "description": "Enter the total number of Assessments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_tx",
@@ -1119,7 +1404,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DE"
+      "column": "DE",
+      "description": "Enter the total number of treatments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt__pva_4_wk_avg",
@@ -1129,7 +1417,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "DF"
+      "column": "DF",
+      "description": "PVA (Patient Visit Average) Shows the average number of treatments sessions per Assessment completed for the service for a running 4 week average",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_available_slots",
@@ -1139,7 +1430,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DG"
+      "column": "DG",
+      "description": "Enter the total number of available appointments for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": true
     },
     {
       "key": "rmt_hours_available",
@@ -1149,7 +1443,10 @@
       "source": "EMR",
       "role": "J",
       "target": "Total Available = 32",
-      "column": "DH"
+      "column": "DH",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_booked_hours",
@@ -1159,7 +1456,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DI"
+      "column": "DI",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_arrived_slots",
@@ -1169,7 +1469,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DJ"
+      "column": "DJ",
+      "description": "Enter the total number of booked appointments (Ax + Tx) for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt__utilization",
@@ -1179,7 +1482,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "DK"
+      "column": "DK",
+      "description": "Shows the percent of available appointments that were booked for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt_tp_given",
@@ -1189,7 +1495,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "DL"
+      "column": "DL",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "rmt__tp_utilization",
@@ -1199,7 +1508,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "DM"
+      "column": "DM",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_total_revenue",
@@ -1209,7 +1521,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DO"
+      "column": "DO",
+      "description": "Enter the total amount of revenue billed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_ax",
@@ -1219,7 +1534,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DP"
+      "column": "DP",
+      "description": "Enter the total number of Assessments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_tx",
@@ -1229,7 +1547,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DQ"
+      "column": "DQ",
+      "description": "Enter the total number of treatments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro__pva_4_wk_avg",
@@ -1239,7 +1560,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "DR"
+      "column": "DR",
+      "description": "PVA (Patient Visit Average) Shows the average number of treatments sessions per Assessment completed for the service for a running 4 week average",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_available_slots",
@@ -1249,7 +1573,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DS"
+      "column": "DS",
+      "description": "Enter the total number of available appointments for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": true
     },
     {
       "key": "chiro_hours_available",
@@ -1259,7 +1586,10 @@
       "source": "EMR",
       "role": "J",
       "target": "Total Available = 34",
-      "column": "DT"
+      "column": "DT",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_booked_hours",
@@ -1269,7 +1599,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DU"
+      "column": "DU",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_arrived_slots",
@@ -1279,7 +1612,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "DV"
+      "column": "DV",
+      "description": "Enter the total number of booked appointments (Ax + Tx) for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro__utilization",
@@ -1289,7 +1625,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "DW"
+      "column": "DW",
+      "description": "Shows the percent of available appointments that were booked for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro_tp_given",
@@ -1299,7 +1638,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "DX"
+      "column": "DX",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "chiro__tp_utilization",
@@ -1309,7 +1651,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "DY"
+      "column": "DY",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pelvic_health_total_revenue",
@@ -1319,7 +1664,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "EA"
+      "column": "EA",
+      "description": "Enter the total amount of revenue billed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pelvic_health_ax",
@@ -1329,7 +1677,10 @@
       "source": "EMR",
       "role": "J",
       "target": "Target = 1",
-      "column": "EB"
+      "column": "EB",
+      "description": "Enter the total number of Assessments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pelvic_health_tx",
@@ -1339,7 +1690,10 @@
       "source": "EMR",
       "role": "J",
       "target": null,
-      "column": "EC"
+      "column": "EC",
+      "description": "Enter the total number of treatments completed for the service for a given week",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pelvic_health__pva_4_wk_avg",
@@ -1349,7 +1703,10 @@
       "source": "Formula",
       "role": "J",
       "target": null,
-      "column": "ED"
+      "column": "ED",
+      "description": "PVA (Patient Visit Average) Shows the average number of treatments sessions per Assessment completed for the service for a running 4 week average",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "true_pva_average",
@@ -1359,7 +1716,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "EF"
+      "column": "EF",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "clinic_wide__utilization_eg",
@@ -1369,7 +1729,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "EG"
+      "column": "EG",
+      "description": null,
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pva_average",
@@ -1379,7 +1742,10 @@
       "source": null,
       "role": null,
       "target": null,
-      "column": "EI"
+      "column": "EI",
+      "description": null,
+      "url": null,
+      "hidden": true
     },
     {
       "key": "pelvic_health_available_slots",
@@ -1389,7 +1755,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "EJ"
+      "column": "EJ",
+      "description": "Enter the total number of available appointments for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "pelvic_health_arrived_slots",
@@ -1399,7 +1768,10 @@
       "source": "EMR",
       "role": null,
       "target": null,
-      "column": "EK"
+      "column": "EK",
+      "description": "Enter the total number of booked appointments (Ax + Tx) for the service for a given week Note: This is number of appointments NOT hours",
+      "url": null,
+      "hidden": false
     },
     {
       "key": "clinic_wide__utilization_el",
@@ -1409,7 +1781,10 @@
       "source": "Formula",
       "role": null,
       "target": null,
-      "column": "EL"
+      "column": "EL",
+      "description": "Shows the percent of available appointments that were booked for the service for a given week",
+      "url": null,
+      "hidden": false
     }
   ],
   "weeks": [

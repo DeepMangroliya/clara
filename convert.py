@@ -110,6 +110,21 @@ class Metric:
         target: Target value or descriptive note from row 7.
         column: Excel column letter (``"B"``, ``"AJ"`` …) for traceability
             back to the source workbook.
+        description: Long-form definition of the metric, captured from the
+            cell comment on the row-2 header. ``None`` when no comment is
+            present. These comments are how the source workbook documents
+            what each KPI actually means and are valuable context for any
+            downstream consumer.
+        url: External URL captured from a ``=HYPERLINK(...)`` formula in
+            any of rows 1–7. The display text of such a hyperlink is
+            already preserved on whichever named field it lives in
+            (``source``, ``target`` …); this field surfaces the underlying
+            link so it isn't silently dropped. ``None`` when no hyperlink
+            applies to this column.
+        hidden: ``True`` if the source column is hidden in Excel. The
+            column's data is still preserved end-to-end; this flag lets a
+            downstream dashboard or report mirror the source's visibility
+            choices when desired.
     """
 
     key: str
@@ -120,6 +135,9 @@ class Metric:
     role: str | None
     target: Any
     column: str
+    description: str | None = None
+    url: str | None = None
+    hidden: bool = False
 
 
 @dataclass(frozen=True)
@@ -274,6 +292,69 @@ def _normalize_cell(value: Any) -> Any:
     return str(value)
 
 
+# Pattern to capture the URL embedded in an ``=HYPERLINK("url", "label")``
+# formula. Captures only the URL; the visible label survives as the cell's
+# cached display value and is read separately via the data-only workbook.
+_RE_HYPERLINK = re.compile(
+    r'^=HYPERLINK\(\s*"([^"]+)"', re.IGNORECASE
+)
+
+# Timestamp line in cell comments — matches strings like ``(2026-04-29 16:56:49)``.
+_RE_COMMENT_TIMESTAMP = re.compile(r"\(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\)")
+
+
+def _extract_comment(cell: Any) -> str | None:
+    """Return a cell's comment text with whitespace normalised.
+
+    Excel comments in this workbook follow a consistent shape: a header
+    line (``======``), an internal ID, a timestamp, then the actual
+    descriptive text. The header noise is dropped so the field carries
+    only the human-readable definition.
+    """
+    if cell is None or cell.comment is None:
+        return None
+
+    raw = cell.comment.text or ""
+    if not raw.strip():
+        return None
+
+    # Strip the boilerplate prelude ('======', 'ID#...', timestamp) that
+    # every comment in this workbook carries. Anything still containing
+    # useful text after that filter is the real description.
+    cleaned_lines: list[str] = []
+    for line in raw.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("======"):
+            continue
+        if stripped.startswith("ID#"):
+            continue
+        if _RE_COMMENT_TIMESTAMP.fullmatch(stripped):
+            continue
+        cleaned_lines.append(stripped)
+
+    if not cleaned_lines:
+        return None
+    return _RE_WHITESPACE.sub(" ", " ".join(cleaned_lines))
+
+
+def _extract_hyperlink_url(formula_cell: Any) -> str | None:
+    """Pull the URL out of a ``=HYPERLINK("url", "text")`` formula.
+
+    ``formula_cell`` must come from a workbook loaded with
+    ``data_only=False``; otherwise its value is the formula's cached
+    result rather than the formula itself.
+    """
+    if formula_cell is None:
+        return None
+    value = formula_cell.value
+    if not isinstance(value, str):
+        return None
+    match = _RE_HYPERLINK.match(value)
+    return match.group(1) if match else None
+
+
 # ---------------------------------------------------------------------------
 # Workbook structure helpers
 # ---------------------------------------------------------------------------
@@ -362,8 +443,26 @@ def _iter_column_runs(
 # ---------------------------------------------------------------------------
 
 
-def _extract_metric(ws: Worksheet, col_idx: int, section_name: str) -> Metric:
+@dataclass(frozen=True)
+class _ExtractionContext:
+    """Bundles the worksheets and metadata needed to build a :class:`Metric`.
+
+    ``data_ws`` is the data-only view (cached formula values); ``formula_ws``
+    is the same sheet loaded with formula text intact. Both are required
+    because the description and URL fields live in different parts of the
+    workbook than the cached cell values.
+    """
+
+    data_ws: Worksheet
+    formula_ws: Worksheet
+    hidden_columns: frozenset[str]
+
+
+def _extract_metric(
+    ctx: _ExtractionContext, col_idx: int, section_name: str
+) -> Metric:
     """Build a :class:`Metric` from the header rows above ``col_idx``."""
+    ws = ctx.data_ws
     label = _normalize_cell(ws.cell(row=ROW_METRIC, column=col_idx).value)
     column_letter = get_column_letter(col_idx)
 
@@ -371,6 +470,25 @@ def _extract_metric(ws: Worksheet, col_idx: int, section_name: str) -> Metric:
     # reference workbook). Synthesise a positional key so the data is not
     # silently dropped, and leave ``label`` as ``None`` to signal absence.
     label_for_key = label if isinstance(label, str) and label else f"col_{column_letter}"
+
+    # Cell comments on the row-2 header carry the canonical definition of
+    # what each metric measures (e.g. "Enter the total revenue billed
+    # across all services for a given week"). We surface those as
+    # ``description``.
+    description = _extract_comment(ws.cell(row=ROW_METRIC, column=col_idx))
+
+    # The source workbook embeds Google Sheets links via
+    # ``=HYPERLINK("url", "label")`` formulas in the source row. The
+    # cached value is just the visible label; the URL itself lives in the
+    # formula text and is only readable from the formula-mode worksheet.
+    url: str | None = None
+    for header_row in (ROW_BANNER, ROW_METRIC, ROW_FOCUS, ROW_SOURCE,
+                       ROW_ROLE, ROW_TARGET):
+        url = _extract_hyperlink_url(
+            ctx.formula_ws.cell(row=header_row, column=col_idx)
+        )
+        if url:
+            break
 
     return Metric(
         key=_slugify(label_for_key),
@@ -381,6 +499,9 @@ def _extract_metric(ws: Worksheet, col_idx: int, section_name: str) -> Metric:
         role=_normalize_cell(ws.cell(row=ROW_ROLE, column=col_idx).value),
         target=_normalize_cell(ws.cell(row=ROW_TARGET, column=col_idx).value),
         column=column_letter,
+        description=description,
+        url=url,
+        hidden=column_letter in ctx.hidden_columns,
     )
 
 
@@ -400,6 +521,9 @@ def _replace_metric_key(metric: Metric, new_key: str) -> Metric:
         role=metric.role,
         target=metric.target,
         column=metric.column,
+        description=metric.description,
+        url=metric.url,
+        hidden=metric.hidden,
     )
 
 
@@ -582,10 +706,17 @@ def convert_workbook(
         raise FileNotFoundError(f"Input path is not a file: {input_path}")
 
     logger.info("Loading workbook: %s", input_path)
-    # ``data_only=True`` returns cached formula results rather than the
-    # formula strings themselves. ``read_only=True`` would be faster for
-    # very large files but disables features we use; the scoreboard is
-    # small enough that the simpler API wins.
+    # The converter needs two views of the workbook:
+    #
+    #   * ``data_only=True``   gives cached formula results (the numbers a
+    #     human sees opening the file in Excel) — used for all cell values.
+    #   * ``data_only=False``  gives raw formula text — used to recover the
+    #     URL out of ``=HYPERLINK("...")`` cells and any other metadata
+    #     that is encoded as a formula rather than a value.
+    #
+    # The scoreboard is small enough that loading it twice is essentially
+    # free. ``read_only=True`` would be faster for very large files but
+    # disables features we rely on (cell comments and column dimensions).
     #
     # ``load_workbook`` raises a wide variety of exceptions for malformed
     # input: ``zipfile.BadZipFile`` for non-zip data, ``KeyError`` for
@@ -597,6 +728,7 @@ def convert_workbook(
     # distinguish "cannot read" from "wrong format".
     try:
         workbook = load_workbook(filename=input_path, data_only=True)
+        formula_workbook = load_workbook(filename=input_path, data_only=False)
     except PermissionError:
         raise
     except (OSError, ValueError, KeyError, zipfile.BadZipFile) as exc:
@@ -605,6 +737,7 @@ def convert_workbook(
         ) from exc
 
     worksheet = _select_sheet(workbook, sheet_name)
+    formula_worksheet = _select_sheet(formula_workbook, worksheet.title)
     last_row = _effective_max_row(worksheet)
     last_col = worksheet.max_column
 
@@ -615,12 +748,28 @@ def convert_workbook(
 
     _validate_layout(worksheet, last_row)
 
+    # Snapshot which columns are hidden in the source. ``column_dimensions``
+    # is keyed by column letter; absence from the dict means "default,
+    # i.e. visible". Computing this once avoids repeated dict lookups
+    # during metric extraction.
+    hidden_columns = frozenset(
+        letter for letter, dim in worksheet.column_dimensions.items()
+        if dim.hidden
+    )
+    logger.debug("Hidden columns: %s", sorted(hidden_columns))
+
+    ctx = _ExtractionContext(
+        data_ws=worksheet,
+        formula_ws=formula_worksheet,
+        hidden_columns=hidden_columns,
+    )
+
     # Walk the columns left-to-right, splitting on spacer columns.
     metrics: list[Metric] = []
     for run in _iter_column_runs(worksheet, last_row, last_col):
         section_name = _resolve_section_name(worksheet, run)
         for col_idx in run:
-            metrics.append(_extract_metric(worksheet, col_idx, section_name))
+            metrics.append(_extract_metric(ctx, col_idx, section_name))
 
     metrics = _disambiguate_keys(metrics)
     sections = _build_sections(metrics)
@@ -665,6 +814,11 @@ def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
     write cannot leave a half-written ``output.json`` for downstream
     consumers. The temp file is created on the same filesystem as the
     destination so ``os.replace`` is guaranteed atomic on POSIX.
+
+    ``tempfile.mkstemp`` creates files with mode ``0600`` for security.
+    We relax that to respect the process umask (typically ``0644``) so
+    the output is readable by other users and tools — the expected
+    behaviour for a generated artifact.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     encoded = json.dumps(payload, indent=2, ensure_ascii=False)
@@ -678,6 +832,12 @@ def _write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
             fh.write("\n")
             fh.flush()
             os.fsync(fh.fileno())
+        # Apply user umask to a 0666 baseline so the result is typically
+        # 0644. ``os.umask`` returns the previous value; we restore it
+        # immediately to avoid side-effecting the rest of the process.
+        umask = os.umask(0)
+        os.umask(umask)
+        os.chmod(tmp_name, 0o666 & ~umask)
         os.replace(tmp_name, path)
     except Exception:
         # Best-effort cleanup; the original file (if any) is untouched.

@@ -60,14 +60,17 @@ the file as a small relational dataset:
   ],
   "metrics": [
     {
-      "key":     "total_revenue_all_services",
-      "label":   "Total Revenue - All Services",
-      "section": "Clinic Wide",
-      "focus":   "Financial",
-      "source":  "EMR",
-      "role":    "J",
-      "target":  null,
-      "column":  "B"
+      "key":         "total_revenue_all_services",
+      "label":       "Total Revenue - All Services",
+      "section":     "Clinic Wide",
+      "focus":       "Financial",
+      "source":      "EMR",
+      "role":        "J",
+      "target":      null,
+      "column":      "B",
+      "description": "Enter the total revenue billed across all services for a given week",
+      "url":         null,
+      "hidden":      false
     }
   ],
   "weeks": [
@@ -105,13 +108,13 @@ is the join key. A consumer can pick the axis that suits the query.
 
 ```mermaid
 flowchart TD
-    A[Scoreboard Test.xlsx] --> B[Load with openpyxl<br/>data_only=True]
+    A[Scoreboard Test.xlsx] --> B[Load workbook<br/>cached values + formula text]
     B --> C[Detect spacer columns<br/>split into contiguous runs]
     C --> D{Name each run}
     D -->|banner cell?| E[Use banner text]
     D -->|discipline prefix?| F["PT / RMT / CHIRO /<br/>Pelvic Health"]
     D -->|otherwise| G[Clinic Wide]
-    E --> H[Extract metrics from rows 1–7]
+    E --> H[Extract metrics: rows 1–7<br/>+ cell comments<br/>+ HYPERLINK URLs<br/>+ hidden flag]
     F --> H
     G --> H
     H --> I[Extract weekly values from rows 8+]
@@ -140,6 +143,24 @@ column:
 
 All of rows 1–5 and 7 land on the `Metric` object. Nothing about a column's
 meaning is thrown away.
+
+**Cell comments** on the row-2 headers carry the canonical *definition* of
+each metric ("Enter the total revenue billed across all services…"). The
+workbook has 53 such comments, and they're the most usable piece of
+metadata in the whole file — exactly the kind of context an LLM or new
+developer needs. They're surfaced as `metric.description`. The
+boilerplate prelude (`======`, internal IDs, timestamps) Excel attaches
+to every comment is stripped out.
+
+**Hidden columns and hyperlink URLs** are also preserved:
+
+- 21 columns are flagged hidden in the source. Where they aren't also
+  spacer columns, the metric is kept with `hidden: true` so a downstream
+  consumer can mirror or override the source's visibility choices.
+- Two columns (`AZ4`, `BA4`) hold `=HYPERLINK("…", "Tracker")` formulas
+  pointing to external Google Sheets. The cached display label
+  (`"Tracker"`) lands on `metric.source`; the URL itself lands on
+  `metric.url` so the link isn't silently lost.
 
 ### Spacer columns
 
@@ -216,7 +237,10 @@ formula" with a single `isinstance` check.
 | Metrics extracted | **125** (all keys unique, all match `[a-z0-9_]+`) |
 | Weeks of data | **3** |
 | Non-null source cells preserved | **181 / 181** (verified end-to-end) |
-| Excel errors preserved | **1** (`#REF!` in EC10) |
+| Cell comments captured as `description` | **53** |
+| Hyperlink URLs captured | **2** (Google Sheets trackers) |
+| Hidden columns flagged | **17** |
+| Excel errors preserved | **1** (`#REF!` in `EC10`) |
 
 ---
 
@@ -227,12 +251,13 @@ formula" with a single `isinstance` check.
   and the existing `--sheet` flag already half-implements it.
 - **A JSON Schema document** alongside the output, so a downstream
   service can validate and an LLM has a clear contract to reason about.
-- **Per-cell provenance.** `metric.column` already gives column-level
+- **Per-cell row provenance.** `metric.column` already gives column-level
   traceability; adding the row reference (e.g. `H9`) to each value would
   let any number in the JSON be traced back to a specific workbook cell.
-- **Optional formula preservation.** A second pass with
-  `data_only=False` to attach formula text to each `Metric` would let a
-  consumer see *how* a value was computed, not just what it was.
+- **Optional formula preservation.** A second pass attaching formula
+  text to each `Metric` (or even per cell) would let a consumer see
+  *how* a value was computed, not just what it was. The two-workbook
+  load is already in place; this would be a small additive change.
 - **A small test suite.** Golden-file tests pinning a handful of
   spot-check values (e.g. `total_revenue_all_services` on `2026-02-09`
   is exactly `42360.64`) would make regressions in the converter
